@@ -1,0 +1,20 @@
+# Ignore .NET build output directories
+bin/
+obj/
+properties/
+.vs/
+.vscode/
+
+# Ignore user-specific files
+*.user
+*.userosscache
+*.suo
+*.cache
+
+# Ignore binary files
+*.dll
+*.exe
+*.pdb
+
+# Other files
+*.http
