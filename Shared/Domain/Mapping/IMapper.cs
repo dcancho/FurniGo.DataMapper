@@ -2,7 +2,7 @@
 
 namespace FurniGo.DataMapper.Shared.Domain.Mapping
 {
-    public interface IMapper<T1, T2> where T1 : IEntity where T2 : IEntity
+    public interface IMapper<T1, T2>
     {
         /// <summary>
         /// Maps <paramref name="T2"/> to the <typeparamref name="T1"/> type.

@@ -1,5 +1,10 @@
+using FurniGo.DataMapper.App.Domain.Models;
 using FurniGo.DataMapper.App.Domain.Repositories;
 using FurniGo.DataMapper.App.Infrastructure.Repositories;
+using FurniGo.DataMapper.App.Mapping;
+using FurniGo.DataMapper.App.Resources;
+using FurniGo.DataMapper.Shared.Domain.Mapping;
+using FurniGo.DataMapper.Shared.Domain.Models;
 using FurniGo.DataMapper.Shared.Infrastructure.Configuration;
 
 namespace FurniGo.DataMapper;
@@ -31,8 +36,11 @@ public class Program
 
 		builder.Services.AddSingleton<AppDbContext>(sp => new AppDbContext(connectionString, databaseName));
 
-		builder.Services.AddScoped<IUserRepository, UserRepository>();
+		// builder.Services.AddScoped<IUserRepository, UserRepository>();
 		// builder.Services.AddScoped<IMapper<User, AppUser>, AppUserMapper>();
+		builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+		builder.Services.AddScoped<IMapper<Order, AppOrder>, AppOrderMapper>();
+		builder.Services.AddScoped<IMapper<AppOrder, SaveOrderAppResource>, OrderResourceMapper>();
 
 		var app = builder.Build();
 

@@ -1,7 +1,7 @@
 using FurniGo.DataMapper.Shared.Domain.Models;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace FurniGo.DataMapper.App.Domain.Models
+namespace FurniGo.DataMapper.SocialNetwork.Domain.Models
 {
     public class SocialNetworkMapperUser : IEntity
     {
