@@ -42,6 +42,11 @@ public class Program
 		builder.Services.AddScoped<IMapper<Order, AppOrder>, AppOrderMapper>();
 		builder.Services.AddScoped<IMapper<AppOrder, SaveOrderAppResource>, OrderResourceMapper>();
 
+		// Workshop services
+		builder.Services.AddScoped<IWorkshopRepository, WorkshopRepository>();
+		builder.Services.AddScoped<IMapper<Workshop, AppWorkshop>, AppWorkshopMapper>();
+		builder.Services.AddScoped<IMapper<AppWorkshop, SaveWorkshopAppResource>, WorkshopResourceMapper>();
+
 		var app = builder.Build();
 
 		// Configure the HTTP request pipeline.
