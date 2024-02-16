@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using FurniGo.DataMapper.Shared.Domain.Models;
 using FurniGo.DataMapper.App.Domain.Repositories;
-using FurniGo.DataMapper.Shared.Mapping;
 using FurniGo.DataMapper.Shared.Domain.Mapping;
 using FurniGo.DataMapper.App.Domain.Models;
 using MongoDB.Driver;
@@ -14,13 +13,13 @@ namespace FurniGo.DataMapper.Controllers;
 public class UserController : ControllerBase
 {
 	private readonly IUserRepository _userRepository;
-    private readonly IMapper<User, AppUser, SocialNetworkMapperUser> _userMapper;
+    private readonly IMapper<User, AppUser> _userAppMapper;
     private readonly ILogger<UserController> _logger;
 
-	public UserController(IUserRepository userRepository, IMapper<User, AppUser, SocialNetworkMapperUser> userMapper, ILogger<UserController> logger)
+	public UserController(IUserRepository userRepository, IMapper<User, AppUser> userMapper, ILogger<UserController> logger)
 	{
 		_userRepository = userRepository;
-        _userMapper = userMapper;
+        _userAppMapper = userMapper;
         _logger = logger;
 	}
 
@@ -34,7 +33,7 @@ public class UserController : ControllerBase
 		}
 		else
 		{
-			return Ok(_userMapper.MapToType1(user));
+			return Ok(_userAppMapper.Map(user));
 		}
 	}
 
