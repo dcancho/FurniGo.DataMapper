@@ -33,5 +33,12 @@ namespace FurniGo.DataMapper.App.Domain.Repositories
 		/// <param name="description"></param>
 		/// <returns></returns>
 		Task<bool> ChangeDescription(string id, string description);
+		/// <summary>
+		/// Check if a worker, identified by <paramref name="workerId"/> exists in a workshop, identified by <paramref name="id"/>.
+		/// </summary>
+		/// <param name="id"></param>
+		/// <param name="workerId"></param>
+		/// <returns></returns>
+		Task<bool> CheckIfWorkerExists(string id, string workerId);
 	}
 }

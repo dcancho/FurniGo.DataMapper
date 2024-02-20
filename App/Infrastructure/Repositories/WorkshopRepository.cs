@@ -50,5 +50,12 @@ namespace FurniGo.DataMapper.App.Infrastructure.Repositories
 				throw new Exception("Worker not found", ex);
 			}
 		}
+
+		public async Task<bool> CheckIfWorkerExists(string id, string workerId)
+		{
+			var filter = Builders<Workshop>.Filter.Where(e => e.Id == id && e.RegisteredUsers.Contains(workerId));
+			var result = await _context.Collection<Workshop>().Find(filter).FirstOrDefaultAsync();
+			return result != null;
+		}
 	}
 }
