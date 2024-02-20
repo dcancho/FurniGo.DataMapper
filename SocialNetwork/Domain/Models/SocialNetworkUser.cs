@@ -3,7 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace FurniGo.DataMapper.SocialNetwork.Domain.Models
 {
-    public class SocialNetworkMapperUser : IEntity
+    public class SocialNetworkUser : IEntity
     {
         [BsonId]
         [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
