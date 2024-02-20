@@ -47,6 +47,11 @@ public class Program
 		builder.Services.AddScoped<IMapper<Workshop, AppWorkshop>, AppWorkshopMapper>();
 		builder.Services.AddScoped<IMapper<AppWorkshop, SaveWorkshopAppResource>, WorkshopResourceMapper>();
 
+		// Media services
+		builder.Services.AddScoped<IMediaRepository, MediaRepository>();
+		builder.Services.AddScoped<IMapper<Media, AppMedia>, AppMediaMapper>();
+		builder.Services.AddScoped<IMapper<AppMedia, SaveMediaAppResource>, MediaResourceMapper>();
+
 		var app = builder.Build();
 
 		// Configure the HTTP request pipeline.

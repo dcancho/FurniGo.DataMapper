@@ -3,6 +3,7 @@ using MongoDB.Driver;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Bson;
+using MongoDB.Driver.GridFS;
 
 namespace FurniGo.DataMapper.Shared.Infrastructure.Configuration
 {
@@ -10,6 +11,7 @@ namespace FurniGo.DataMapper.Shared.Infrastructure.Configuration
     {
         private readonly IMongoClient _client;
         private readonly IMongoDatabase _database;
+				private readonly GridFSBucket _gridFsBucket;
 
         public IMongoCollection<Chat> Chats => _database.GetCollection<Chat>("chats");
         public IMongoCollection<Media> Media => _database.GetCollection<Media>("media");
@@ -18,12 +20,13 @@ namespace FurniGo.DataMapper.Shared.Infrastructure.Configuration
         public IMongoCollection<Post> Posts => _database.GetCollection<Post>("posts");
         public IMongoCollection<User> Users => _database.GetCollection<User>("users");
         public IMongoCollection<Workshop> Workshops => _database.GetCollection<Workshop>("workshops");
-
+				public GridFSBucket gridFSBucket => _gridFsBucket;
 
         public AppDbContext(string connectionString = "mongodb://localhost:27017", string databaseName = "furnigo-dev")
         {
             _client = new MongoClient(connectionString);
             _database = _client.GetDatabase(databaseName);
+						_gridFsBucket = new GridFSBucket(_database);
         }
 
         public IMongoCollection<TEntity>? Collection<TEntity>() where TEntity : class
