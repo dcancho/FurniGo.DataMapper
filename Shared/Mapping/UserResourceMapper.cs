@@ -1,16 +1,16 @@
-using FurniGo.DataMapper.App.Domain.Models;
 using FurniGo.DataMapper.App.Resources;
 using FurniGo.DataMapper.IAM.Domain.Models;
 using FurniGo.DataMapper.Shared.Domain.Mapping;
+using FurniGo.DataMapper.Shared.Domain.Models;
 
 namespace FurniGo.DataMapper.App.Mapping
 {
-	public class UserResourceMapper : IMapper<IAMUser, SaveUserResource>
+	public class UserResourceMapper : IMapper<User, SaveUserResource>
 	{
-		public IAMUser Map(SaveUserResource toMap)
+		public User Map(SaveUserResource toMap)
 		{
-			return new IAMUser
-			{
+			return new User
+            {
 				FirstName = toMap.FirstName,
 				LastName = toMap.LastName,
 				Username = toMap.Username,
@@ -20,7 +20,7 @@ namespace FurniGo.DataMapper.App.Mapping
 			};
 		}
 
-		public SaveUserResource Map(IAMUser toMap)
+		public SaveUserResource Map(User toMap)
 		{
 			return new SaveUserResource
 			{
