@@ -3,7 +3,6 @@ using FurniGo.DataMapper.Shared.Domain.Models;
 using FurniGo.DataMapper.App.Domain.Repositories;
 using FurniGo.DataMapper.Shared.Domain.Mapping;
 using FurniGo.DataMapper.App.Domain.Models;
-using MongoDB.Driver;
 using FurniGo.DataMapper.App.Resources;
 
 namespace FurniGo.DataMapper.Controllers;
