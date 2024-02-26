@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurniGo.DataMapper", "FurniGo.DataMapper.csproj", "{2F54FB0C-04A7-4D2E-8C9F-ABD2B74BA859}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FurniGo.DataMapper.Test", "..\FurniGo.DataMapper.Test\FurniGo.DataMapper.Test.csproj", "{CD778B29-2E50-401B-9ABD-A94D9ECD1C62}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2F54FB0C-04A7-4D2E-8C9F-ABD2B74BA859}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F54FB0C-04A7-4D2E-8C9F-ABD2B74BA859}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F54FB0C-04A7-4D2E-8C9F-ABD2B74BA859}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD778B29-2E50-401B-9ABD-A94D9ECD1C62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD778B29-2E50-401B-9ABD-A94D9ECD1C62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD778B29-2E50-401B-9ABD-A94D9ECD1C62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD778B29-2E50-401B-9ABD-A94D9ECD1C62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

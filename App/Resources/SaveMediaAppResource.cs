@@ -1,5 +1,8 @@
 namespace FurniGo.DataMapper.App.Resources
 {
+	/// <summary>
+	/// DTO for saving a media resource.
+	/// </summary>
 	public class SaveMediaAppResource
 	{
 		public string Title { get; set; }

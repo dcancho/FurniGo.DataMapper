@@ -1,6 +1,4 @@
 using FurniGo.DataMapper.App.Domain.Models;
-using FurniGo.DataMapper.App.Domain.Repositories;
-using FurniGo.DataMapper.App.Infrastructure.Repositories;
 using FurniGo.DataMapper.App.Mapping;
 using FurniGo.DataMapper.App.Resources;
 using FurniGo.DataMapper.IAM.Domain.Models;
@@ -10,6 +8,7 @@ using FurniGo.DataMapper.Shared.Domain.Models;
 using FurniGo.DataMapper.Shared.Domain.Repositories;
 using FurniGo.DataMapper.Shared.Infrastructure.Configuration;
 using FurniGo.DataMapper.Shared.Infrastructure.Repositories;
+using FurniGo.DataMapper.Shared.Resources;
 using FurniGo.DataMapper.SocialNetwork.Domain.Models;
 using FurniGo.DataMapper.SocialNetwork.Mapping;
 
@@ -31,19 +30,35 @@ public class Program
 		var connectionString = builder.Configuration["DATABASE_CONNECTION"];
 		var databaseName = builder.Configuration["DATABASE_NAME"];
 
-		if (string.IsNullOrEmpty(connectionString))
-		{
-			throw new ArgumentNullException("DATABASE_CONNECTION");
-		}
-		if (string.IsNullOrEmpty(databaseName))
-		{
-			throw new ArgumentNullException("DATABASE_NAME");
-		}
+        try
+        {
+            if (string.IsNullOrEmpty(connectionString) || string.IsNullOrEmpty(databaseName))
+            {
+                // Intentar instanciar AppDbContext con valores por defecto
+                var defaultConnectionString = "mongodb://localhost:27017";
+                var defaultDatabaseName = "furnigo-dev";
+                builder.Services.AddSingleton<AppDbContext>(sp => new AppDbContext(defaultConnectionString, defaultDatabaseName));
+            }
+            else
+            {
+                builder.Services.AddSingleton<AppDbContext>(sp => new AppDbContext(connectionString, databaseName));
+            }
+        }
+        catch
+        {
+            if (string.IsNullOrEmpty(connectionString))
+            {
+				throw new ArgumentNullException("Database connection string is null or empty");
+            }
+            if (string.IsNullOrEmpty(databaseName))
+            {
+				throw new ArgumentNullException("Database name is null or empty");
+            }
+        }
 
-		builder.Services.AddSingleton<AppDbContext>(sp => new AppDbContext(connectionString, databaseName));
 
-		// User services
-		builder.Services.AddScoped<IUserRepository, UserRepository>();
+        // User services
+        builder.Services.AddScoped<IUserRepository, UserRepository>();
 		builder.Services.AddScoped<IMapper<User, AppUser>, AppUserMapper>();
 		builder.Services.AddScoped<IMapper<User, IAMUser>, IAMUserMapper>();
 		builder.Services.AddScoped<IMapper<User, SocialNetworkUser>, SocialNetworkUserMapper>();

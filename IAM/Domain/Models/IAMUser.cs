@@ -4,6 +4,9 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace FurniGo.DataMapper.IAM.Domain.Models
 {
+	/// <summary>
+	/// Represents an user in the IAM domain.
+	/// </summary>
     public class IAMUser : IEntity
     {
         [BsonId]

@@ -4,6 +4,9 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace FurniGo.DataMapper.App.Domain.Models
 {
+	/// <summary>
+	/// Represents an order in the App domain.
+	/// </summary>
 	public class AppOrder : IEntity
 	{
 		[BsonId]

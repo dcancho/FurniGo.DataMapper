@@ -3,13 +3,16 @@ using FurniGo.DataMapper.Shared.Domain.Models;
 using FurniGo.DataMapper.Shared.Domain.Mapping;
 using FurniGo.DataMapper.App.Domain.Models;
 using MongoDB.Driver;
-using FurniGo.DataMapper.App.Resources;
 using FurniGo.DataMapper.IAM.Domain.Models;
 using FurniGo.DataMapper.SocialNetwork.Domain.Models;
 using FurniGo.DataMapper.Shared.Domain.Repositories;
+using FurniGo.DataMapper.Shared.Resources;
 
 namespace FurniGo.DataMapper.Controllers;
 
+/// <summary>
+/// Controller for the User entity. It provides basic CRUD operations for the User entity.
+/// </summary>
 [ApiController]
 [Route("api/v1/[controller]")]
 public class UserController : ControllerBase

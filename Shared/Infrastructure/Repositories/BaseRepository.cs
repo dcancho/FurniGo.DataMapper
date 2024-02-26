@@ -6,6 +6,10 @@ using FurniGo.DataMapper.Shared.Domain.Models;
 
 namespace FurniGo.DataMapper.Shared.Infrastructure.Repositories
 {
+	/// <summary>
+	/// Implementation of IBaseRepository for MongoDB. It provides basic CRUD operations for the <typeparamref name="TEntity"/> entity.
+	/// </summary>
+	/// <typeparam name="TEntity"></typeparam>
 	public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class, IEntity
 	{
 		protected readonly AppDbContext _context;
